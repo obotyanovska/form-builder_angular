@@ -1,0 +1,29 @@
+@import './../../../scss/variables.scss';
+
+.authNav {
+  display: flex;
+  align-items: center;
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  &__link:focus,
+  &__link:hover,
+  .activeLink {
+    color: $btnFontColor;
+    background-color: $btnBackgroundColor;
+  }
+
+  &__greeting {
+    margin-bottom: 0;
+    font-weight: 500;
+    color: $fontColor;
+  }
+}

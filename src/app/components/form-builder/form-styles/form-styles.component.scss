@@ -1,0 +1,48 @@
+@import './../../../scss/variables.scss';
+
+.formStyles {
+  height: 100vh;
+  width: 400px;
+}
+
+.accordion {
+  &__item {
+    display: block;
+    border: solid 1px $greyColor;
+
+    &:first-child {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+
+  & + &__item {
+    border-top: none;
+  }
+
+  &__itemHeader {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding: 16px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $accordionHeaderColor;
+    }
+  }
+
+  &__itemDescription {
+    font-size: 0.85em;
+    color: $greyColor;
+  }
+
+  &__itemBody {
+    padding: 16px;
+  }
+}

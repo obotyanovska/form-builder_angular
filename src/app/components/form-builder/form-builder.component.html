@@ -1,0 +1,34 @@
+<div class="formBuilder" >
+  <ng-template [cdkPortalOutlet]='stylesPortal'></ng-template>
+  <ng-template [cdkPortalOutlet]='displayPortal'></ng-template>
+  <ng-template [cdkPortalOutlet]='elementsPortal'></ng-template>
+
+<ng-template #stylesPortalContent>
+  <app-form-styles class="formBuilder__item">
+  </app-form-styles>
+</ng-template>
+
+<ng-template #displayPortalContent>
+  <app-form-display 
+    cdkDropList 
+    id='droppedElements' 
+    [cdkDropListData]="droppedElements"
+    cdkDropListConnectedTo="dragElements" 
+    (cdkDropListDropped)="drop($event)" 
+    class="formBuilder__item">
+  </app-form-display>
+</ng-template>
+
+<ng-template #elementsPortalContent>
+  <app-form-elements 
+    cdkDropList 
+    id='dragElements' 
+    [cdkDropListData]="dragElements"
+    cdkDropListConnectedTo="droppedElements" 
+    (cdkDropListDropped)="drop($event)" 
+    class="formBuilder__item"
+    [elementsList]=dragElements>
+  </app-form-elements>
+</ng-template>
+
+</div>

@@ -1,0 +1,137 @@
+<div 
+  *ngrxLet="generalStyles$ as generalStyles"
+  class="dragDrop__container"
+  (click)=deleteElement($event) (click)=setActiveElement($event)>
+  <div 
+    *ngrxLet="shownElements$ as shownElements"
+    class="dragDrop__list"
+    [ngStyle]="commonService.stylesFactory(generalStyles, formGeneralStyles)">
+      <h1 class="dragDrop__header">{{ generalStyles.title }}</h1>
+
+      <div 
+        class="dragDrop__box" 
+        *ngFor="let item of shownElements" 
+        cdkDrag>
+        <div 
+          class="dragDrop__customPlaceholder" 
+          *cdkDragPlaceholder></div>
+
+        <div 
+          [id]="item.id" 
+          *ngIf="item.name === 'input'" 
+          class="fieldElement" 
+          [ngClass]='{isActiveElement: item.isCurrentElement}'>
+          <div class="fieldElement__content">
+            <p 
+              class="fieldElement__fieldText"
+              [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
+              {{item.inputFieldText }}</p>
+            <mat-form-field 
+              class="example-full-width" 
+              appearance="fill" 
+              [attr.required]="item.selectRequired"
+              [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
+              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)" class="fieldElement__label">{{ item.inputLabel }}</mat-label>
+              <input 
+                class="fieldElement__input" 
+                name="input" 
+                matInput 
+                placeholder={{item.inputPlaceholder}}
+                [ngStyle]="commonService.stylesFactory(item, inputStyles)">
+            </mat-form-field>
+          </div>
+          <app-button-panel></app-button-panel>
+        </div>
+        
+        <div 
+          [id]="item.id" 
+          *ngIf="item.name === 'textarea'" 
+          class="fieldElement" 
+          [ngClass]='{isActiveElement: item.isCurrentElement}'>
+          <div class="fieldElement__content">
+            <p 
+              class="fieldElement__fieldText"
+              [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
+              {{item.textareaFieldText }}</p>
+            <mat-form-field 
+              class="example-full-width" 
+              appearance="fill" 
+              [attr.required]="item.selectRequired"
+              [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
+              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)" class="fieldElement__label">{{ item.textareaLabel }}</mat-label>
+              <textarea 
+                class="fieldElement__input" 
+                name="input" 
+                matInput 
+                placeholder={{item.inputPlaceholder}}
+                [ngStyle]="commonService.stylesFactory(item, textareaStyles)"></textarea>
+            </mat-form-field>
+          </div>
+          <app-button-panel></app-button-panel>
+        </div>
+        
+        <div 
+          [id]="item.id" 
+          *ngIf="item.name === 'select'" 
+          class="fieldElement" 
+          [ngClass]='{isActiveElement: item.isCurrentElement}'>
+          <div class="fieldElement__content">
+            <p 
+              class="fieldElement__fieldText"
+              [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
+              {{item.selectFieldText }}</p>
+            <mat-form-field 
+              appearance="fill" 
+              [attr.required]="item.selectRequired"
+              [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
+              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)">{{ item.selectLabel }}</mat-label>
+              <mat-select 
+                class="fieldElement__input" 
+                name="select"
+                [ngStyle]="commonService.stylesFactory(item, matSelectStyles)">
+                <mat-option 
+                  *ngFor="let option of item.selectOptions" 
+                  [value]="option" 
+                  [ngStyle]="commonService.stylesFactory(item, matOptionStyles)">
+                  {{ option }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <app-button-panel></app-button-panel>
+        </div>
+
+        <div 
+          [id]="item.id" 
+          *ngIf="item.name === 'checkbox'" 
+          class="fieldElement" 
+          [ngClass] = '{isActiveElement: item.isCurrentElement}'>
+          <div class="fieldElement__content">
+            <p 
+              class="fieldElement__fieldText"
+              [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
+              {{item.checkboxFieldText }}</p>
+            <mat-checkbox 
+              name="checkbox"
+              [ngStyle]="commonService.stylesFactory(item, checkboxStyles)" 
+              [attr.required]="item.selectRequired">{{ item.checkboxLabel }}</mat-checkbox>
+          </div>
+          <app-button-panel></app-button-panel>
+        </div>
+
+        <div 
+          [id]="item.id" 
+          *ngIf="item.name === 'button'" 
+          class="fieldElement" 
+          [ngClass] = '{isActiveElement: item.isCurrentElement}'>
+          <div class="fieldElement__content">
+          <button 
+            mat-flat-button name="button"
+            [ngStyle]="commonService.stylesFactory(item, buttonStyles)">{{
+            item.buttonText }}</button>
+          </div>
+          <app-button-panel></app-button-panel>
+        </div>
+      </div>
+  </div>
+</div>

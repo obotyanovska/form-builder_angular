@@ -1,0 +1,99 @@
+<form [formGroup]="formElementsStyles" class="formElementsStyles">
+  <mat-grid-list cols="2" rowHeight="2:1" gutterSize='10px'>
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Field description or question</mat-label>
+          <input matInput type="text" placeholder="Enter your text" formControlName="inputFieldText">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Field label</mat-label>
+          <input matInput type="text" placeholder="Enter your text" formControlName="inputLabel">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Placeholder</mat-label>
+          <input matInput type="text" placeholder="Enter your text" formControlName="inputPlaceholder" />
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Field width</mat-label>
+          <input matInput type="text" placeholder="Enter a number" formControlName="inputWidth" />
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Field height</mat-label>
+          <input matInput type="text" placeholder="Enter a number" formControlName="inputHeight" />
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Font size</mat-label>
+          <input matInput type="text" placeholder="Enter a number"
+            formControlName="inputFontSize" />
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Font weight</mat-label>
+          <mat-select formControlName="inputFontWeight">
+            <mat-option *ngFor="let item of fontWeight()" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Border style</mat-label>
+          <mat-select formControlName="inputBorder">
+            <mat-option *ngFor="let style of borderStyles()" [value]="style">
+              {{style}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item colorInput">
+        <label class="formElementsStyles__label labelColor" for="inputColor"> Font color</label>
+        <input class="colorInput__input" type="color" formControlName="inputColor" id="inputColor">
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="formElementsStyles__item radioBtn" >
+    <p class="formElementsStyles__label radioBtn__label">Required field</p>
+    <fieldset class="radioBtn__fieldset" formControlName="inputRequired" ngDefaultControl>
+      <mat-radio-button class="radioBtn__button" name="Required" value="required">Required</mat-radio-button>
+      <mat-radio-button class="radioBtn__button" name="Required" value="" checked>Not Required</mat-radio-button>
+    </fieldset>
+  </div>
+</form>

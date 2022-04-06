@@ -1,0 +1,14 @@
+@import './../../scss/variables.scss';
+
+.appTopBar {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    font-size: 24px;
+    font-weight: 500;
+    color: $fontColor;
+  }
+}
